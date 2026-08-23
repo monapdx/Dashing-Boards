@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap");
+
+:root {
+  --cream: #fff4bd;
+  --cream-deep: #f1e2a0;
+  --lilac: #b787d8;
+  --pink: #ef8dc7;
+  --lime: #a8d743;
+  --black: #1d1b1c;
+  --brown: #5d4834;
+  --orange: #ffb52e;
+  --green: #4dcb63;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--cream); }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 35px 22px 25px;
+  color: var(--black);
+  font: 500 18px/1.35 "Pixelify Sans", monospace;
+  background: linear-gradient(var(--lilac) 0 31px, var(--cream) 31px 100%);
+}
+
+body::before {
+  content: "Dashboard - Panel Playground - v1.0";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  transform: translateX(-50%);
+}
+
+body::after {
+  content: "_  □  X";
+  position: absolute;
+  right: 8px;
+  top: 3px;
+  padding: 0 4px;
+  border: 2px solid var(--black);
+  background: #ddd2b8;
+  font: 700 15px "VT323", monospace;
+  word-spacing: 8px;
+}
+
+a { color: #a653cf; font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+fieldset {
+  width: min(1200px, 100%);
+  margin: 0 auto 14px;
+  padding: 9px 13px 11px;
+  border: 2px solid var(--black);
+  border-radius: 0;
+  background: var(--cream-deep);
+}
+
+legend { padding: 2px 9px; border: 2px solid var(--black); border-radius: 10px; color: var(--black); background: var(--lilac); font-weight: 700; }
+fieldset label { display: inline-flex; align-items: center; margin: 3px 22px 3px 0; font-size: 15px; cursor: pointer; }
+fieldset input { width: 16px; height: 16px; margin-right: 7px; accent-color: var(--lime); }
+
+.dashboard {
+  position: relative;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border: 2px solid var(--black);
+  background: var(--cream);
+}
+
+.dashboard::before {
+  content: "●  ●  ●     PANEL PLAYGROUND";
+  grid-column: 1 / -1;
+  display: block;
+  padding: 6px 12px;
+  border-bottom: 2px solid var(--black);
+  color: var(--black);
+  background: #f8e9ae;
+  font-size: 13px;
+  word-spacing: 5px;
+}
+
+.dashboard > div {
+  position: relative;
+  min-height: 185px;
+  padding: 20px;
+  border-right: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.dashboard > div::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+  border-left: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  color: var(--black);
+  background: var(--lilac);
+  font-size: 12px;
+}
+
+.profile { grid-column: 1 / 9; min-height: 290px !important; padding: 40px 28px !important; }
+.profile::before { content: "WELCOME.TXT"; }
+.profile::after { content: "DASHBOARD"; position: absolute; right: 28px; bottom: 20px; color: rgba(29,27,28,.08); font-size: clamp(4rem, 10vw, 9rem); font-weight: 700; }
+
+.schedule-table { grid-column: 9 / 13; min-height: 290px !important; border-right: 0 !important; background: var(--cream-deep) !important; }
+.schedule-table::before { content: "PLAN.EXE"; background: var(--orange) !important; }
+.exercise-table { grid-column: 1 / 5; }
+.exercise-table::before { content: "TOOLS.DAT"; background: var(--pink) !important; }
+.calories { grid-column: 5 / 10; background: #fff1c8 !important; }
+.calories::before { content: "NOTES.TXT"; background: var(--lilac) !important; }
+.personal-bests { grid-column: 10 / 13; border-right: 0 !important; background: #e5efa6 !important; }
+.personal-bests::before { content: "BEST.LOG"; background: var(--lime) !important; }
+.challenges { grid-column: 1 / 8; background: #f8d7e9 !important; }
+.challenges::before { content: "VOICE.WAV"; background: var(--pink) !important; }
+.activity-feed { grid-column: 8 / 13; border-right: 0 !important; }
+.activity-feed::before { content: "FEED.RSS"; background: var(--green) !important; }
+
+#footer {
+  grid-column: 1 / -1;
+  min-height: 38px !important;
+  padding: 8px 13px !important;
+  border: 0 !important;
+  color: var(--black);
+  background: var(--lime) !important;
+  text-align: right;
+  font-size: 12px;
+}
+#footer::before { content: "READY"; left: 0; right: auto; border-left: 0; border-top: 2px solid var(--black); }
+
+h1, h2 { margin: 0 0 20px; font-weight: 700; line-height: 1; }
+
+.profile h2 {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 8px 13px;
+  border: 3px solid var(--black);
+  border-radius: 9px;
+  background: var(--pink);
+  font-size: clamp(3rem, 8vw, 6.6rem);
+  letter-spacing: -.04em;
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+.profile p:empty::after { content: "C:\\PANELS\\IDEAS\\CURRENT"; position: relative; z-index: 2; display: block; margin-top: 18px; color: #9f56cb; font-size: 16px; }
+
+.dashboard > div:not(.profile) h2 {
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--pink);
+  color: #a85bd2;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+}
+h2:empty::after { content: "Untitled"; }
+
+.table-wrap { min-height: 78px; padding: 11px; border: 2px solid var(--black); background: rgba(255,255,255,.25); }
+.table-wrap:empty::after { content: "[ empty directory ]"; color: #806d50; font-size: 14px; }
+
+button, input, select, textarea { border: 2px solid var(--black); border-radius: 0; color: var(--black); background: var(--cream); font: inherit; }
+button { padding: 6px 11px; background: var(--lilac); box-shadow: 2px 2px 0 var(--black); cursor: pointer; }
+button:active { transform: translate(2px, 2px); box-shadow: none; }
+
+table { width: 100%; border-collapse: collapse; background: var(--cream); }
+th, td { padding: 8px 10px; border: 2px solid var(--black); text-align: left; }
+th { background: var(--lilac); font-weight: 700; }
+tr:nth-child(even) td { background: #f2e5aa; }
+
+@media (max-width: 780px) {
+  body { padding: 35px 10px 10px; }
+  .dashboard > div { grid-column: 1 / -1 !important; border-right: 0 !important; }
+  .profile h2 { font-size: clamp(2.7rem, 18vw, 5rem); }
+  fieldset label { display: flex; margin-right: 0; }
+}

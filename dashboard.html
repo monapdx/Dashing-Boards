@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="page-dashboard-index">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel Playground</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <fieldset aria-label="Dashboard styles">
+    <legend>Stylesheets</legend>
+    <label>
+      <input type="checkbox" data-stylesheet="dashboard.css">
+      dashboard.css
+    </label>
+    <label>
+      <input type="checkbox" data-stylesheet="electrocution.css">
+      electrocution.css
+    </label>
+    <label>
+      <input type="checkbox" data-stylesheet="blog-editor.css">
+      blog-editor.css
+    </label>
+        <label>
+      <input type="checkbox" data-stylesheet="pixel-parchment.css">
+      pixel-parchment.css
+    </label>
+            <label>
+      <input type="checkbox" data-stylesheet="neon-acid.css">
+      neon-acid.css
+    </label>
+                <label>
+      <input type="checkbox" data-stylesheet="zine.css">
+      zine.css
+    </label>
+
+  </fieldset>
+
+  <div class="dashboard">
+    <div class="profile">
+      <h2>Dashboard</h2>
+      <p></p>
+    </div>
+
+    <div class="section-title">
+      <h2>TITLE</h2>
+      <div class="table-wrap"></div>
+    </div>
+
+    <div class="exercise-table">
+      <h2>TITLE</h2>
+      <div class="table-wrap">
+        <h1></h1>
+      </div>
+    </div>
+
+    <div class="calories">
+      <h2>TITLE</h2>
+    </div>
+
+    <div class="personal-bests">
+      <h2>TITLE</h2>
+    </div>
+
+    <div class="challenges">
+      <h2>TITLE</h2>
+    </div>
+
+    <div class="activity-feed">
+      <h2>TITLE</h2>
+    </div>
+
+    <div id="footer" class="static">
+      <i>Credit: <a href="https://codepen.io/carterfromsl/pen/QWYMjBW">Carter Lovelace @ codepen.io</a></i>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-stylesheet]').forEach((toggle) => {
+      toggle.addEventListener('change', () => {
+        const href = toggle.dataset.stylesheet;
+        const existingStylesheet = Array.from(
+          document.querySelectorAll('link[rel="stylesheet"]')
+        ).find((link) => link.dataset.toggleHref === href);
+
+        if (toggle.checked && !existingStylesheet) {
+          const stylesheet = document.createElement('link');
+          stylesheet.rel = 'stylesheet';
+          stylesheet.href = href;
+          stylesheet.dataset.toggleHref = href;
+          document.head.appendChild(stylesheet);
+        } else if (!toggle.checked && existingStylesheet) {
+          existingStylesheet.remove();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

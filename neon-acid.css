@@ -1,0 +1,440 @@
+/* Neon Acid for Panel Playground
+   Dark dashboard adaptation of Ashly Lorenzana's Obsidian theme. */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap");
+
+:root {
+  --acid-pink: #ff2bd6;
+  --acid-purple: #b76cff;
+  --acid-green: #39ff14;
+  --acid-cyan: #00e5ff;
+  --acid-black: #000000;
+  --acid-ink: #07070b;
+  --acid-panel: #0d0d14;
+  --acid-panel-2: #101018;
+  --acid-panel-3: #161622;
+  --acid-text: #f4f4ff;
+  --acid-muted: #c8c8d8;
+  --acid-faint: #8f8fa3;
+  --hard-border: 5px solid var(--acid-black);
+  --hard-shadow: 6px 6px 0 var(--acid-green);
+  --hover-shadow: 8px 8px 0 var(--acid-purple);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  min-height: 100%;
+  color-scheme: dark;
+  background: var(--acid-ink);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px;
+  color: var(--acid-text);
+  font: 500 16px/1.55 "IBM Plex Mono", monospace;
+  background:
+    linear-gradient(90deg, rgba(57,255,20,.035) 1px, transparent 1px),
+    linear-gradient(rgba(57,255,20,.035) 1px, transparent 1px),
+    var(--acid-ink);
+  background-size: 34px 34px;
+}
+
+body::before {
+  content: "NEON ACID // LIVE";
+  position: fixed;
+  z-index: 50;
+  right: 0;
+  bottom: 20px;
+  padding: 6px 13px;
+  border: 3px solid var(--acid-black);
+  border-right: 0;
+  color: var(--acid-black);
+  background: var(--acid-green);
+  font: 700 .65rem "IBM Plex Mono", monospace;
+  letter-spacing: .12em;
+}
+
+::selection { color: var(--acid-black); background: var(--acid-green); }
+
+a {
+  color: var(--acid-green);
+  font-weight: 700;
+  text-decoration: underline 3px var(--acid-pink);
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--acid-black);
+  background: var(--acid-cyan);
+  outline: 2px solid var(--acid-black);
+  text-decoration: none;
+}
+
+fieldset {
+  width: min(1180px, 100%);
+  margin: 0 auto 25px;
+  padding: 13px 17px 15px;
+  border: var(--hard-border);
+  border-radius: 0;
+  background: var(--acid-panel-2);
+  box-shadow: var(--hard-shadow);
+}
+
+legend {
+  padding: 4px 11px;
+  border: 3px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-pink);
+  font: 700 1rem "Oswald", sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--acid-purple);
+}
+
+fieldset label {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px 24px 3px 0;
+  color: var(--acid-text);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+fieldset input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
+  border: 2px solid var(--acid-muted);
+  border-radius: 0;
+  background: var(--acid-ink);
+}
+
+fieldset input:checked {
+  border-color: var(--acid-black);
+  background:
+    linear-gradient(45deg, transparent 40%, var(--acid-black) 40% 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 48%, var(--acid-black) 48% 62%, transparent 62%),
+    var(--acid-green);
+  box-shadow: 3px 3px 0 var(--acid-purple);
+}
+
+.dashboard {
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+  padding: 22px;
+  border: var(--hard-border);
+  background: var(--acid-panel);
+  box-shadow: 10px 10px 0 var(--acid-pink);
+}
+
+.dashboard::before {
+  content: "DASHBOARD / HIGH VOLTAGE";
+  position: absolute;
+  z-index: 8;
+  top: -18px;
+  right: 24px;
+  padding: 5px 12px;
+  border: 3px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-green);
+  font: 700 .68rem "IBM Plex Mono", monospace;
+  letter-spacing: .1em;
+  box-shadow: 4px 4px 0 var(--acid-purple);
+}
+
+.dashboard > div {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 175px;
+  padding: 23px;
+  border: var(--hard-border);
+  border-radius: 0;
+  color: var(--acid-text);
+  background: var(--acid-panel-2);
+  box-shadow: var(--hard-shadow);
+  overflow: hidden;
+  transition: transform .08s linear, box-shadow .08s linear;
+}
+
+.dashboard > div:hover {
+  z-index: 3;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--hover-shadow);
+}
+
+.dashboard > div::before {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  border-left: 3px solid var(--acid-black);
+  border-bottom: 3px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-green);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.profile {
+  grid-column: 1 / 9 !important;
+  min-height: 300px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-color: var(--acid-black) !important;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 18px, rgba(255,43,214,.055) 18px 20px),
+    var(--acid-panel-2) !important;
+  box-shadow: 8px 8px 0 var(--acid-pink) !important;
+}
+
+.profile::before { content: "MAIN / 01"; background: var(--acid-pink) !important; }
+
+.profile::after {
+  content: "ACID";
+  position: absolute;
+  right: 25px;
+  top: 38px;
+  padding: 0 10px 4px;
+  border: 5px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-cyan);
+  font: 700 3.3rem/1 "Oswald", sans-serif;
+  letter-spacing: .04em;
+  box-shadow: 7px 7px 0 var(--acid-purple);
+  transform: rotate(2deg);
+}
+
+.profile h2 {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0;
+  color: var(--acid-green);
+  font: 700 clamp(4rem, 8.5vw, 7.5rem)/.8 "Oswald", sans-serif;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  text-shadow: 5px 5px 0 var(--acid-black), 8px 8px 0 var(--acid-pink);
+}
+
+.profile p:empty::after {
+  content: "TOOLS / NOTES / SIGNAL / NOISE";
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: 25px;
+  padding: 6px 10px;
+  border: 3px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-pink);
+  font-weight: 700;
+  box-shadow: 5px 5px 0 var(--acid-green);
+}
+
+.schedule-table {
+  grid-column: 9 / 13 !important;
+  min-height: 300px !important;
+  color: var(--acid-black) !important;
+  background: var(--acid-cyan) !important;
+  box-shadow: 8px 8px 0 var(--acid-purple) !important;
+}
+.schedule-table::before { content: "QUEUE / 02"; background: var(--acid-purple) !important; }
+
+.exercise-table {
+  grid-column: 1 / 7 !important;
+  border-top: 12px solid var(--acid-pink) !important;
+}
+.exercise-table::before { content: "WORK / 03"; background: var(--acid-pink) !important; }
+
+.calories {
+  grid-column: 7 / 13 !important;
+  border-top: 12px solid var(--acid-green) !important;
+  background: var(--acid-panel-3) !important;
+}
+.calories::before { content: "NOTES / 04"; background: var(--acid-green) !important; }
+
+.personal-bests {
+  grid-column: 1 / 4 !important;
+  color: var(--acid-black) !important;
+  background: var(--acid-pink) !important;
+  box-shadow: 7px 7px 0 var(--acid-green) !important;
+}
+.personal-bests::before { content: "PEAK / 05"; background: var(--acid-cyan) !important; }
+
+.challenges {
+  grid-column: 4 / 10 !important;
+  border-top: 12px solid var(--acid-cyan) !important;
+  background: var(--acid-black) !important;
+  box-shadow: 8px 8px 0 var(--acid-purple) !important;
+}
+.challenges::before { content: "VOICE / 06"; background: var(--acid-cyan) !important; }
+
+.activity-feed {
+  grid-column: 10 / 13 !important;
+  color: var(--acid-black) !important;
+  background: var(--acid-green) !important;
+  box-shadow: 7px 7px 0 var(--acid-pink) !important;
+}
+.activity-feed::before { content: "FEED / 07"; background: var(--acid-pink) !important; }
+
+#footer {
+  grid-column: 1 / -1 !important;
+  min-height: auto !important;
+  padding: 17px 21px !important;
+  border-top-color: var(--acid-purple) !important;
+  color: var(--acid-muted);
+  background: var(--acid-black) !important;
+  text-align: right;
+  font-size: .7rem;
+  text-transform: uppercase;
+  box-shadow: 6px 6px 0 var(--acid-pink) !important;
+}
+#footer::before { content: "END / 08"; left: 0; right: auto !important; border-left: 0 !important; border-right: 3px solid var(--acid-black); }
+
+h1, h2, h3, button, legend {
+  font-family: "Oswald", Impact, sans-serif;
+}
+
+h1, h2 {
+  margin: 0 0 18px;
+  line-height: .95;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+}
+
+.dashboard > div:not(.profile) h2 {
+  display: block;
+  max-width: calc(100% - 74px);
+  padding: 7px 12px 8px;
+  border: 5px solid var(--acid-black);
+  color: var(--acid-black);
+  background: var(--acid-pink);
+  font-size: clamp(1.4rem, 2.5vw, 2.35rem);
+  box-shadow: 6px 6px 0 var(--acid-green);
+}
+
+.schedule-table h2, .activity-feed h2 { background: var(--acid-cyan) !important; box-shadow: 6px 6px 0 var(--acid-purple) !important; }
+.personal-bests h2 { background: var(--acid-pink) !important; }
+h2:empty::after { content: "Open Panel"; }
+
+.table-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 84px;
+  padding: 13px;
+  border: 3px dashed var(--acid-faint);
+  color: var(--acid-text);
+  background: var(--acid-panel);
+}
+
+.schedule-table .table-wrap,
+.activity-feed .table-wrap,
+.personal-bests .table-wrap {
+  border-color: var(--acid-black);
+  color: var(--acid-black);
+  background: rgba(0,0,0,.08);
+}
+
+.table-wrap:empty::after {
+  content: "> awaiting input_";
+  color: var(--acid-faint);
+  font-weight: 700;
+}
+
+button, input, select, textarea {
+  border: 3px solid var(--acid-black);
+  border-radius: 0;
+  color: var(--acid-text);
+  background: var(--acid-panel-3);
+  font: inherit;
+}
+
+button {
+  padding: 10px 15px;
+  color: var(--acid-black);
+  background: var(--acid-pink);
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0 var(--acid-green);
+  cursor: pointer;
+  transition: transform .08s linear, box-shadow .08s linear;
+}
+
+button:hover {
+  background: var(--acid-cyan);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--acid-purple);
+}
+
+table {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--acid-text);
+  background: var(--acid-panel-2);
+}
+
+th, td {
+  padding: 10px 13px;
+  border: 3px solid var(--acid-black);
+  text-align: left;
+}
+
+th {
+  color: var(--acid-black);
+  background: var(--acid-purple);
+  font-family: "Oswald", sans-serif;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) td { background: var(--acid-panel-3); }
+tr:hover td { color: var(--acid-black); background: var(--acid-cyan); }
+
+code {
+  padding: 2px 5px;
+  border: 2px solid var(--acid-pink);
+  color: var(--acid-green);
+  background: #111118;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+pre {
+  padding: 15px;
+  border: 5px solid var(--acid-pink);
+  color: var(--acid-green);
+  background: var(--acid-black);
+  box-shadow: 6px 6px 0 var(--acid-purple);
+  overflow: auto;
+}
+
+pre code { padding: 0; border: 0; background: transparent; }
+
+@media (max-width: 780px) {
+  body { padding: 14px; }
+  body::before, .dashboard::before { display: none; }
+  .dashboard { padding: 14px; gap: 18px; box-shadow: 7px 7px 0 var(--acid-pink); }
+  .dashboard > div { grid-column: 1 / -1 !important; }
+  .profile h2 { font-size: clamp(3.2rem, 19vw, 5.8rem); }
+  .profile::after { opacity: .32; }
+  fieldset label { display: flex; margin-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}

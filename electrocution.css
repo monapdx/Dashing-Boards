@@ -1,0 +1,374 @@
+/* Electrocution for Panel Playground
+   Dashboard adaptation of Ashly Lorenzana's light neo-brutalist Obsidian theme. */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Oswald:wght@500;600;700&display=swap");
+
+:root {
+  --electro-pink: #ff2bd6;
+  --electro-lime: #39ff14;
+  --electro-purple: #7a00ff;
+  --electro-cyan: #00e5ff;
+  --electro-yellow: #ffe600;
+  --electro-black: #000000;
+  --electro-white: #ffffff;
+  --electro-paper: #f4f4f7;
+  --electro-gray: #d9d9e2;
+  --electro-muted: #5c5c68;
+  --hard-border: 3px solid var(--electro-black);
+  --shadow: 8px 8px 0 var(--electro-black);
+  --shadow-small: 5px 5px 0 var(--electro-black);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  min-height: 100%;
+  color-scheme: light;
+  background: var(--electro-paper);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px;
+  color: var(--electro-black);
+  font: 400 16px/1.55 "IBM Plex Mono", monospace;
+  background:
+    linear-gradient(90deg, rgba(122, 0, 255, .055) 1px, transparent 1px),
+    linear-gradient(rgba(122, 0, 255, .055) 1px, transparent 1px),
+    var(--electro-paper);
+  background-size: 32px 32px;
+}
+
+body::before {
+  content: "⚡ ELECTROCUTION / SYSTEM ONLINE";
+  position: fixed;
+  z-index: 30;
+  right: 0;
+  bottom: 24px;
+  padding: 7px 13px 7px 16px;
+  border: 2px solid var(--electro-black);
+  border-right: 0;
+  color: var(--electro-white);
+  background: var(--electro-black);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+::selection { color: var(--electro-black); background: var(--electro-lime); }
+
+a {
+  color: var(--electro-purple);
+  font-weight: 700;
+  text-decoration: underline 3px var(--electro-lime);
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--electro-black);
+  background: var(--electro-cyan);
+  outline: 2px solid var(--electro-black);
+  text-decoration: none;
+}
+
+fieldset {
+  width: min(1180px, 100%);
+  margin: 0 auto 24px;
+  padding: 13px 17px 15px;
+  border: var(--hard-border);
+  border-radius: 0;
+  background: var(--electro-white);
+  box-shadow: var(--shadow-small);
+}
+
+legend {
+  padding: 4px 10px;
+  border: 2px solid var(--electro-black);
+  color: var(--electro-white);
+  background: var(--electro-purple);
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--electro-black);
+}
+
+fieldset label {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px 24px 3px 0;
+  color: var(--electro-black);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+fieldset input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
+  border: 2px solid var(--electro-black);
+  border-radius: 0;
+  background: var(--electro-white);
+}
+
+fieldset input:checked {
+  background:
+    linear-gradient(45deg, transparent 40%, var(--electro-black) 40% 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 48%, var(--electro-black) 48% 62%, transparent 62%),
+    var(--electro-lime);
+  box-shadow: 3px 3px 0 var(--electro-black);
+}
+
+.dashboard {
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding: 20px;
+  border: var(--hard-border);
+  background: var(--electro-white);
+  box-shadow: 12px 12px 0 var(--electro-purple), 15px 15px 0 var(--electro-black);
+}
+
+.dashboard::before {
+  content: "HIGH VOLTAGE DASHBOARD";
+  position: absolute;
+  z-index: 8;
+  top: -17px;
+  right: 26px;
+  padding: 5px 12px;
+  border: 2px solid var(--electro-black);
+  background: var(--electro-yellow);
+  font: 700 .68rem "IBM Plex Mono", monospace;
+  letter-spacing: .1em;
+  box-shadow: 4px 4px 0 var(--electro-black);
+}
+
+.dashboard > div {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 175px;
+  padding: 23px;
+  border: var(--hard-border);
+  background: var(--electro-white);
+  box-shadow: var(--shadow-small);
+  overflow: hidden;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.dashboard > div:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--electro-black);
+}
+
+.dashboard > div::before {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  border-left: 2px solid var(--electro-black);
+  border-bottom: 2px solid var(--electro-black);
+  color: var(--electro-white);
+  background: var(--electro-black);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.profile {
+  grid-column: 1 / 9 !important;
+  min-height: 290px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:
+    linear-gradient(135deg, transparent 0 72%, rgba(255,255,255,.3) 72%),
+    var(--electro-pink) !important;
+}
+
+.profile::before { content: "MAIN / 01"; }
+
+.profile::after {
+  content: "⚡";
+  position: absolute;
+  right: 45px;
+  top: 34px;
+  color: var(--electro-yellow);
+  font: 700 7rem/1 "Oswald", sans-serif;
+  text-shadow: 5px 5px 0 var(--electro-black);
+  transform: rotate(8deg);
+}
+
+.profile h2 {
+  position: relative;
+  z-index: 2;
+  max-width: 670px;
+  margin: 0;
+  color: var(--electro-white);
+  font: 700 clamp(4rem, 8.5vw, 7.4rem)/.8 "Oswald", sans-serif;
+  letter-spacing: -.065em;
+  text-transform: uppercase;
+  text-shadow: 6px 6px 0 var(--electro-black);
+}
+
+.profile p:empty::after {
+  content: "LOUD TOOLS FOR SERIOUS IDEAS";
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: 24px;
+  padding: 6px 10px;
+  border: 2px solid var(--electro-black);
+  background: var(--electro-lime);
+  font-weight: 700;
+  box-shadow: 4px 4px 0 var(--electro-black);
+}
+
+.schedule-table {
+  grid-column: 9 / 13 !important;
+  min-height: 290px !important;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 14px, rgba(0,0,0,.06) 14px 20px),
+    var(--electro-yellow) !important;
+}
+.schedule-table::before { content: "QUEUE / 02"; }
+
+.exercise-table {
+  grid-column: 1 / 7 !important;
+  border-top: 12px solid var(--electro-purple) !important;
+}
+.exercise-table::before { content: "WORK / 03"; background: var(--electro-purple) !important; }
+
+.calories {
+  grid-column: 7 / 13 !important;
+  border-top: 12px solid var(--electro-pink) !important;
+  background: #fff7fd !important;
+}
+.calories::before { content: "NOTES / 04"; background: var(--electro-pink) !important; }
+
+.personal-bests {
+  grid-column: 1 / 4 !important;
+  background: var(--electro-lime) !important;
+}
+.personal-bests::before { content: "PEAK / 05"; }
+
+.challenges {
+  grid-column: 4 / 10 !important;
+  color: var(--electro-white);
+  background: var(--electro-black) !important;
+  box-shadow: 7px 7px 0 var(--electro-cyan) !important;
+}
+.challenges::before { content: "VOICE / 06"; color: var(--electro-black) !important; background: var(--electro-cyan) !important; }
+
+.activity-feed {
+  grid-column: 10 / 13 !important;
+  background: var(--electro-cyan) !important;
+}
+.activity-feed::before { content: "FEED / 07"; }
+
+#footer {
+  grid-column: 1 / -1 !important;
+  min-height: auto !important;
+  padding: 16px 20px !important;
+  color: var(--electro-white);
+  background: var(--electro-purple) !important;
+  text-align: right;
+  font-size: .7rem;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0 var(--electro-pink) !important;
+}
+#footer::before { content: "END / 08"; left: 0; right: auto !important; border-left: 0 !important; border-right: 2px solid var(--electro-black); }
+#footer a { color: var(--electro-lime); }
+
+h1, h2, h3, button, legend {
+  font-family: "Oswald", sans-serif;
+}
+
+h1, h2 {
+  margin: 0 0 18px;
+  line-height: .95;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+
+.dashboard > div:not(.profile) h2 {
+  display: inline-block;
+  max-width: calc(100% - 76px);
+  padding: 7px 11px;
+  border: 2px solid var(--electro-black);
+  color: var(--electro-black);
+  background: var(--electro-white);
+  font-size: clamp(1.4rem, 2.5vw, 2.35rem);
+  box-shadow: 4px 4px 0 var(--electro-black);
+}
+
+.challenges h2 { color: var(--electro-black) !important; background: var(--electro-lime) !important; }
+h2:empty::after { content: "Open Panel"; }
+
+.table-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 80px;
+  padding: 12px;
+  border: 2px dashed currentColor;
+  background: rgba(255,255,255,.52);
+}
+
+.challenges .table-wrap { background: rgba(255,255,255,.07); }
+.table-wrap:empty::after { content: "> awaiting input_"; color: var(--electro-muted); font-weight: 700; }
+
+button, input, select, textarea {
+  border: 2px solid var(--electro-black);
+  border-radius: 0;
+  color: var(--electro-black);
+  background: var(--electro-white);
+  font: inherit;
+}
+
+button {
+  padding: 10px 15px;
+  background: var(--electro-pink);
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--electro-black);
+  cursor: pointer;
+}
+
+button:hover { background: var(--electro-lime); transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--electro-black); }
+
+table { position: relative; z-index: 2; width: 100%; border-collapse: collapse; background: var(--electro-white); }
+th, td { padding: 10px; border: 2px solid var(--electro-black); text-align: left; }
+th { color: var(--electro-white); background: var(--electro-pink); font-family: "Oswald", sans-serif; text-transform: uppercase; }
+tr:nth-child(even) td { background: #f0edff; }
+
+code, pre {
+  color: var(--electro-lime);
+  background: var(--electro-black);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+pre { padding: 15px; border: 3px solid var(--electro-pink); box-shadow: 6px 6px 0 var(--electro-purple); }
+
+@media (max-width: 780px) {
+  body { padding: 14px; }
+  body::before, .dashboard::before { display: none; }
+  .dashboard { padding: 14px; gap: 16px; box-shadow: 8px 8px 0 var(--electro-purple), 11px 11px 0 var(--electro-black); }
+  .dashboard > div { grid-column: 1 / -1 !important; }
+  .profile h2 { font-size: clamp(3.2rem, 19vw, 5.8rem); }
+  .profile::after { opacity: .35; }
+  fieldset label { display: flex; margin-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}

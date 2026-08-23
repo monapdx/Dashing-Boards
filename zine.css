@@ -1,0 +1,434 @@
+/* Zine Maker Dashboard
+   CSS-only restyle matching the supplied pastel comic-collage references. */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap");
+
+:root {
+  --ink: #151317;
+  --paper: #fffef4;
+  --pink: #ff78ca;
+  --pink-light: #ffd1ed;
+  --pink-hot: #f72a91;
+  --yellow: #fff64d;
+  --yellow-hot: #fff000;
+  --green: #61f734;
+  --cyan: #25d7f4;
+  --blue: #20bde8;
+  --lavender: #d9b8ff;
+  --cream: #fff5d8;
+  --muted: #71656c;
+  --border: 4px solid var(--ink);
+  --shadow: 7px 7px 0 var(--ink);
+  --shadow-sm: 4px 4px 0 var(--ink);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { min-height: 100%; background: #ffddec; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px;
+  overflow-x: hidden;
+  color: var(--ink);
+  font: 500 15px/1.5 "IBM Plex Mono", monospace;
+  background:
+    radial-gradient(circle at 3% 4%, rgba(255,227,54,.88), transparent 23rem),
+    radial-gradient(circle at 98% 95%, rgba(37,215,244,.55), transparent 23rem),
+    radial-gradient(circle at 76% 0%, rgba(255,104,194,.34), transparent 29rem),
+    linear-gradient(135deg, #fff1d8 0%, #ffdce9 48%, #fbd4ef 76%, #d9fbff 100%);
+  background-attachment: fixed;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  width: 330px;
+  height: 330px;
+  pointer-events: none;
+  background: radial-gradient(circle, currentColor 0 3px, transparent 3.5px) 0 0 / 15px 15px;
+  mask-image: radial-gradient(circle at center, black, transparent 72%);
+}
+
+body::before { top: -80px; left: -90px; color: #ffd929; }
+body::after { top: -70px; right: -80px; color: #f75cb9; }
+
+::selection { color: var(--ink); background: var(--yellow); }
+
+a {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline 4px var(--pink-hot);
+  text-underline-offset: 3px;
+}
+
+a:hover { background: var(--yellow); }
+
+fieldset {
+  width: min(1180px, 100%);
+  margin: 0 auto 22px;
+  padding: 13px 17px 15px;
+  border: var(--border);
+  border-radius: 0;
+  background: linear-gradient(100deg, var(--yellow), #ffb877 52%, var(--pink));
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-.15deg);
+}
+
+legend {
+  padding: 5px 11px;
+  border: 3px solid var(--ink);
+  color: var(--ink);
+  background: var(--pink-light);
+  font-family: "Archivo Black", sans-serif;
+  font-size: .88rem;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-1deg);
+}
+
+fieldset label {
+  display: inline-flex;
+  align-items: center;
+  margin: 4px 24px 4px 0;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+fieldset input { width: 19px; height: 19px; margin: 0 8px 0 0; accent-color: var(--pink-hot); box-shadow: none; }
+
+.dashboard {
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  padding: 20px;
+  border: var(--border);
+  background:
+    linear-gradient(rgba(55,45,48,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,45,48,.055) 1px, transparent 1px),
+    rgba(255,254,244,.88);
+  background-size: 22px 22px;
+  box-shadow: 10px 10px 0 var(--ink);
+}
+
+.dashboard::before {
+  content: "✦  LOUD THOUGHTS. MADE YOURS.  ✦";
+  position: absolute;
+  z-index: 8;
+  top: -20px;
+  left: 42px;
+  padding: 6px 14px;
+  border: 3px solid var(--ink);
+  background: var(--yellow);
+  font-weight: 700;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-1.4deg);
+}
+
+.dashboard > div {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 165px;
+  padding: 20px;
+  border: var(--border);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--pink-light);
+  box-shadow: var(--shadow);
+  overflow: visible;
+  transition: transform 90ms linear, box-shadow 90ms linear;
+}
+
+.dashboard > div:nth-child(even) { transform: rotate(.18deg); }
+.dashboard > div:nth-child(odd) { transform: rotate(-.12deg); }
+.dashboard > div:hover { z-index: 5; transform: translate(-2px, -2px) rotate(0deg); box-shadow: 10px 10px 0 var(--ink); }
+
+.dashboard > div::before {
+  content: attr(class);
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  z-index: 3;
+  padding: 5px 9px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--yellow);
+  font: 700 .68rem "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(1.5deg);
+}
+
+.profile {
+  min-height: 300px !important;
+  padding: 38px 30px !important;
+  background:
+    radial-gradient(circle at 86% 20%, rgba(247,42,145,.3), transparent 13rem),
+    linear-gradient(125deg, #fff2cf, #ffcde8 58%, #e7d5ff) !important;
+}
+
+.profile::before {
+  content: "★  ZINE MODE  ★" !important;
+  background: var(--cyan) !important;
+  transform: rotate(3deg) !important;
+}
+
+.profile::after {
+  content: "✦";
+  position: absolute;
+  top: 42px;
+  right: 56px;
+  color: var(--yellow);
+  font: 400 6rem/1 "Archivo Black", sans-serif;
+  -webkit-text-stroke: 4px var(--ink);
+  filter: drop-shadow(5px 5px 0 var(--pink-hot));
+  transform: rotate(12deg);
+}
+
+.profile h2 {
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #ffc0e7;
+  background: transparent;
+  font: 400 clamp(4rem, 9vw, 7.8rem)/.78 "Archivo Black", sans-serif;
+  letter-spacing: -.065em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 8px 8px 0 var(--ink), 13px 13px 0 rgba(255,255,255,.85);
+  transform: rotate(-1.5deg);
+}
+
+.profile p:empty::before {
+  content: "make loud dashboards. ★ tools, notes, sounds, chaos.";
+  display: inline-block;
+  margin-top: 28px;
+  padding: 8px 16px;
+  border: 3px solid var(--ink);
+  color: var(--ink);
+  background: var(--yellow);
+  font: 600 clamp(.82rem, 1.8vw, 1.05rem) "IBM Plex Mono", monospace;
+  box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(-2deg);
+}
+
+h1, h2, h3, button, label, th { font-family: "Archivo Black", sans-serif; }
+
+h1, h2 { margin: 0 0 16px; line-height: .95; letter-spacing: -.025em; text-transform: uppercase; }
+
+h2 {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--yellow);
+  font-size: clamp(1.25rem, 2.5vw, 2.1rem);
+  box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(-1deg);
+}
+
+h2:empty::before { content: "Make Something"; }
+h4, label { color: var(--ink); font-weight: 700; letter-spacing: .02em; }
+label { display: block; margin: 0 0 10px; font-size: .8rem; }
+
+.schedule-table { background: linear-gradient(145deg, var(--yellow-hot), #ffbd72) !important; }
+.schedule-table::before { content: "★ PLAN" !important; background: var(--pink) !important; }
+.exercise-table { background: linear-gradient(145deg, #ffd7ed, #d7c4ff) !important; }
+.exercise-table::before { content: "⚡ BUILD" !important; background: var(--yellow) !important; }
+.calories { background: linear-gradient(145deg, #ffcfeb, #ff93c8) !important; }
+.calories::before { content: "♥ NOTES" !important; background: var(--cyan) !important; }
+.personal-bests { background: linear-gradient(145deg, #d3fbff, var(--cyan)) !important; }
+.personal-bests::before { content: "✿ BEST" !important; background: var(--pink-light) !important; }
+.challenges { background: linear-gradient(145deg, #fff4a2, #ffabdd) !important; }
+.challenges::before { content: "♪ VOICE" !important; background: var(--green) !important; }
+.activity-feed { background: linear-gradient(145deg, #e4ceff, #ffb8dd) !important; }
+.activity-feed::before { content: "➜ FEED" !important; background: var(--yellow) !important; }
+
+.table-wrap,
+#progress-preview,
+#list-preview,
+#faq-preview,
+#table-container,
+.snippet-container {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 13px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(50,45,38,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,45,38,.07) 1px, transparent 1px),
+    var(--paper);
+  background-size: 18px 18px;
+}
+
+.table-wrap:empty::before,
+.calories:has(> h2:last-child)::after,
+.personal-bests:has(> h2:last-child)::after,
+.activity-feed:has(> h2:last-child)::after,
+.challenges:has(> h2:last-child)::after {
+  content: "type your loud thoughts...";
+  display: block;
+  padding: 15px;
+  border: 2px dashed var(--ink);
+  color: var(--muted);
+  background: rgba(255,255,255,.52);
+  font-weight: 600;
+  text-transform: none;
+}
+
+table, .grid-table { width: 100%; border-collapse: collapse; color: var(--ink); background: var(--paper); }
+th, td, .grid-table div { padding: 10px; border: 3px solid var(--ink) !important; text-align: left; vertical-align: top; }
+th, .grid-table .header-cell { color: var(--ink) !important; background: var(--pink) !important; font-size: .78rem; text-transform: uppercase; }
+tr:nth-child(even) td, .grid-table div:nth-child(even) { background: #fff8b7 !important; }
+tr:hover td { background: #cdf9ff !important; }
+
+ul, ol { padding-left: 1.3rem; }
+li, details { margin-bottom: 8px; padding: 9px 11px; border: 3px solid var(--ink); background: rgba(255,255,255,.55); box-shadow: 3px 3px 0 var(--ink); }
+li::marker { color: var(--pink-hot); font-size: 1.2em; }
+summary { cursor: pointer; font-weight: 700; }
+
+input, textarea, select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 11px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 600 .9rem/1.4 "IBM Plex Mono", monospace;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+textarea {
+  min-height: 170px;
+  resize: vertical;
+  background:
+    linear-gradient(rgba(50,45,38,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,45,38,.07) 1px, transparent 1px),
+    var(--paper);
+  background-size: 18px 18px;
+}
+
+input::placeholder, textarea::placeholder { color: #75686f; opacity: 1; }
+input:focus, textarea:focus, select:focus { outline: 5px solid var(--cyan); outline-offset: 2px; }
+input[type="checkbox"] { width: 19px; min-width: 19px; height: 19px; margin-right: 8px; accent-color: var(--pink-hot); box-shadow: none; }
+input[type="file"] { background: linear-gradient(90deg, var(--cyan) 0 32%, var(--paper) 32%); }
+
+button,
+#search,
+#synonym,
+#save-btn,
+#delete-btn,
+#generate,
+#save,
+#generate-btn,
+#download-btn,
+#checkword {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  min-height: 38px;
+  margin: 8px 8px 0 0;
+  padding: 8px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--green);
+  font-size: .78rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 80ms linear, box-shadow 80ms linear;
+}
+
+button:nth-of-type(even) { background: var(--pink-light); }
+button:hover, #search:hover, #synonym:hover, #save-btn:hover, #delete-btn:hover, #generate:hover, #save:hover, #generate-btn:hover, #download-btn:hover, #checkword:hover {
+  background: var(--yellow);
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+button:disabled { color: #887a83; background: #f5e9d3; opacity: 1; cursor: not-allowed; transform: none; }
+#delete-btn, button.delete, button.danger { color: white; background: var(--pink-hot); }
+#save-btn, #save, #download-btn { background: var(--green); }
+
+img, canvas, audio, .movie-container, .snippet, #app-container, .audio-player {
+  max-width: 100%;
+  border: 4px solid var(--ink) !important;
+  border-radius: 0 !important;
+  color: var(--ink) !important;
+  background: var(--paper) !important;
+  box-shadow: 7px 7px 0 var(--ink) !important;
+}
+
+img { outline: 5px solid white; outline-offset: -9px; }
+.snippet, .movie-container, #app-container, .audio-player { padding: 14px !important; }
+.snippet input, .snippet textarea { margin-bottom: 9px; }
+#progress-preview > div, #list-preview > *, #faq-preview > *, #table-container > * { color: var(--ink); }
+
+#progress-preview [style*="border:1px solid black"] { border: 3px solid var(--ink) !important; border-radius: 0; background: var(--paper) !important; overflow: hidden; }
+#progress-preview [style*="background:"] { min-height: 26px; padding-left: 9px; color: var(--ink); font-weight: 700; }
+.word-header, .definition, .example, .word-type, #result { border-color: var(--ink) !important; }
+.definition strong, .example strong, .word-type strong { color: #d50b79; }
+#correct-words { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 0; }
+#correct-words li { margin: 0; list-style: none; color: var(--ink); background: var(--yellow); }
+
+#footer {
+  min-height: auto;
+  color: var(--ink);
+  background: var(--yellow) !important;
+  text-align: center;
+  transform: rotate(-.6deg);
+}
+
+#footer::before { display: none; }
+#footer a { color: var(--ink); }
+
+@media (min-width: 760px) {
+  .dashboard .profile { grid-column: 1 / -1; }
+  .dashboard .schedule-table,
+  .dashboard .exercise-table,
+  .dashboard .progress.bar.generator,
+  .dashboard .list.generator,
+  .dashboard .save.notes,
+  .dashboard .generate.FAQs,
+  .dashboard .audio.notes,
+  .dashboard .table.generator { grid-column: 1 / -1; }
+  .dashboard .calories { grid-column: 1 / 8; }
+  .dashboard .personal-bests { grid-column: 8 / -1; }
+  .dashboard .challenges { grid-column: 1 / 5; }
+  .dashboard .activity-feed { grid-column: 5 / -1; }
+}
+
+@media (max-width: 700px) {
+  body { padding: 14px; }
+  .dashboard { gap: 15px; padding: 13px; }
+  .dashboard::before { left: 12px; font-size: .66rem; }
+  .dashboard > div { min-height: 120px; padding: 14px; box-shadow: 5px 5px 0 var(--ink); }
+  .dashboard > div::before { position: static; display: inline-block; margin: -2px 0 10px; }
+  .profile h2 { font-size: clamp(3rem, 17vw, 5rem); -webkit-text-stroke-width: 2px; text-shadow: 5px 5px 0 var(--ink); }
+  .profile::after { opacity: .3; }
+  fieldset label { display: flex; margin-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
