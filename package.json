@@ -1,0 +1,14 @@
+{
+  "name": "dashing-boards",
+  "private": true,
+  "scripts": {
+    "lint": "npm run lint:css && npm run lint:html",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:html": "htmlhint \"dashboard.html\""
+  },
+  "devDependencies": {
+    "htmlhint": "^1.5.0",
+    "stylelint": "^17.0.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
