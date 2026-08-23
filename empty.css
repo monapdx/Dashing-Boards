@@ -1,3 +1,90 @@
+/*
+ * Dashing Boards submission template
+ *
+ * Copy and rename this file, then move the selectors you need
+ * outside this comment and add your declarations.
+ */
+
+
+/*
+
+body {
+}
+
+fieldset {
+}
+
+legend {
+}
+
+.dashboard {
+}
+
+.dashboard > div {
+}
+
+.profile {
+}
+
+.schedule-table {
+}
+
+.exercise-table {
+}
+
+.calories {
+}
+
+.personal-bests {
+}
+
+.challenges {
+}
+
+.activity-feed {
+}
+
+.table-wrap {
+}
+
+h1 {
+}
+
+h2 {
+}
+
+button {
+}
+
+input {
+}
+
+textarea {
+}
+
+select {
+}
+
+table {
+}
+
+th {
+}
+
+td {
+}
+
+#footer {
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+  }
+}
+
+*/
+
+
 :root {
   --dashing-boards-template: 1;
 }
