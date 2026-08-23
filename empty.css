@@ -306,7 +306,7 @@ audio,
   .dashboard .activity-feed {
     grid-column: 5 / -1;
   }
-}
+
 
 @media (max-width: 700px) {
   body {
