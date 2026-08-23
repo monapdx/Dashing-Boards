@@ -2,7 +2,7 @@
 
 One dashboard. Many identities.
 
-Dashing Boards is a CSS Zen Garden–inspired showcase of how dramatically CSS can transform the same HTML. Every submission styles the shared `dashboard.html` without changing its structure or content.
+Dashing Boards is a CSS Zen Garden–inspired showcase of how dramatically CSS can transform the same HTML. Every submission styles the shared `index.html` without changing its structure or content.
 
 ## Contributing a design
 
