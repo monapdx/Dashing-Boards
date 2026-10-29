@@ -1,0 +1,439 @@
+/* Frontend Toolbox — a colorful catalog-card theme for Dashing Boards. */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap");
+
+:root {
+  --toolbox-ink: #0d0d0f;
+  --toolbox-paper: #fffefa;
+  --toolbox-page: #f2f7fb;
+  --toolbox-pink: #ff4398;
+  --toolbox-lime: #baff00;
+  --toolbox-cyan: #48c8ec;
+  --toolbox-purple: #b869ee;
+  --toolbox-blue-ink: #33455a;
+  --toolbox-border: 3px solid var(--toolbox-ink);
+  --toolbox-shadow: 8px 9px 0 var(--toolbox-ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--toolbox-page);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 56px 24px 70px;
+  color: var(--toolbox-ink);
+  font: 600 15px/1.45 Inter, system-ui, sans-serif;
+  background-color: var(--toolbox-page);
+  background-image:
+    linear-gradient(rgb(46 67 86 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(46 67 86 / 8%) 1px, transparent 1px),
+    radial-gradient(circle at 6% 14%, rgb(255 67 152 / 22%), transparent 23rem),
+    radial-gradient(circle at 91% 10%, rgb(72 200 236 / 26%), transparent 25rem),
+    radial-gradient(circle at 72% 86%, rgb(186 255 0 / 16%), transparent 27rem);
+  background-size: 24px 24px, 24px 24px, auto, auto, auto;
+  background-attachment: fixed;
+}
+
+::selection {
+  color: var(--toolbox-ink);
+  background: var(--toolbox-lime);
+}
+
+a {
+  color: var(--toolbox-ink);
+  font-weight: 800;
+  text-decoration: underline 3px var(--toolbox-pink);
+  text-underline-offset: 3px;
+}
+
+fieldset,
+.dashboard {
+  width: min(1210px, 100%);
+  margin-inline: auto;
+}
+
+fieldset {
+  margin-bottom: 24px;
+  padding: 14px 18px 16px;
+  border: var(--toolbox-border);
+  border-radius: 14px;
+  background: var(--toolbox-paper);
+  box-shadow: 6px 6px 0 var(--toolbox-ink);
+}
+
+legend {
+  padding: 5px 11px;
+  border: 2px solid var(--toolbox-ink);
+  border-radius: 999px;
+  color: var(--toolbox-paper);
+  background: var(--toolbox-ink);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+fieldset label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 22px 4px 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+fieldset input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--toolbox-pink);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 26px 20px;
+}
+
+.dashboard > div {
+  position: relative;
+  grid-column: span 4;
+  min-width: 0;
+  min-height: 246px;
+  padding: 23px 17px 18px;
+  border: var(--toolbox-border);
+  border-radius: 14px;
+  color: var(--toolbox-ink);
+  background: var(--toolbox-paper);
+  box-shadow: var(--toolbox-shadow);
+  overflow: hidden;
+  transition: transform 100ms ease, box-shadow 100ms ease;
+}
+
+.dashboard > div::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  border-bottom: 3px solid var(--toolbox-ink);
+  background: var(--toolbox-pink);
+}
+
+.dashboard > div::before {
+  content: attr(class);
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 13px;
+  padding: 4px 10px;
+  border: 2px solid var(--toolbox-ink);
+  border-radius: 999px;
+  color: var(--toolbox-paper);
+  background: var(--toolbox-ink);
+  font: 800 0.64rem/1 Inter, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dashboard > div:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 12px 0 var(--toolbox-ink);
+}
+
+.profile {
+  grid-column: 1 / -1 !important;
+  min-height: 320px !important;
+  padding: 42px 40px 35px !important;
+  border-radius: 17px !important;
+  background:
+    radial-gradient(circle at 96% 78%, #fa93c3 0 122px, transparent 124px),
+    radial-gradient(circle at 96% 78%, transparent 0 120px, var(--toolbox-ink) 121px 124px, transparent 125px),
+    linear-gradient(132deg,
+      var(--toolbox-lime) 0 55%,
+      var(--toolbox-cyan) 55% 76%,
+      var(--toolbox-pink) 76% 100%) !important;
+  box-shadow: 11px 11px 0 var(--toolbox-ink) !important;
+  overflow: hidden !important;
+}
+
+.profile::after {
+  display: none !important;
+}
+
+.profile::before {
+  content: "" !important;
+  margin-bottom: 18px !important;
+  color: var(--toolbox-paper) !important;
+  background: var(--toolbox-ink) !important;
+}
+
+.profile h2 {
+  width: min(820px, 88%);
+  margin: 0;
+  font: 400 clamp(3.45rem, 8vw, 6.25rem)/0.94 "Archivo Black", sans-serif;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.profile p {
+  max-width: 730px;
+  margin: 24px 0 0;
+  font-size: 1.04rem;
+  font-weight: 800;
+}
+
+.profile p:empty::before {
+  content: "One dashboard. Many identities. Explore how completely CSS can transform the same exact HTML.";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  color: var(--toolbox-ink);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-size: 1.38rem;
+  line-height: 1.08;
+}
+
+h2:empty::before {
+  content: "Dashboard Module";
+}
+
+p,
+li,
+td {
+  color: var(--toolbox-blue-ink);
+}
+
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrap:empty::before {
+  content: "Customize this panel using the active stylesheet.";
+  color: var(--toolbox-blue-ink);
+}
+
+.schedule-table::before {
+  content: "IDENTITY TOOLS" !important;
+}
+
+.schedule-table h2:empty::before {
+  content: "Identity Map";
+}
+
+.exercise-table::after,
+.personal-bests::after {
+  background: var(--toolbox-cyan) !important;
+}
+
+.exercise-table::before {
+  content: "PRINCIPLE TOOLS" !important;
+  color: var(--toolbox-ink) !important;
+  background: var(--toolbox-cyan) !important;
+}
+
+.exercise-table h2:empty::before {
+  content: "Principles Library";
+}
+
+.exercise-table h1 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.calories::after,
+.activity-feed::after {
+  background: var(--toolbox-lime) !important;
+}
+
+.calories::before {
+  content: "WRITING TOOLS" !important;
+  color: var(--toolbox-ink) !important;
+  background: var(--toolbox-lime) !important;
+}
+
+.personal-bests::before {
+  content: "CHART TOOLS" !important;
+  color: var(--toolbox-ink) !important;
+  background: var(--toolbox-cyan) !important;
+}
+
+.personal-bests h2:empty::before {
+  content: "Charts & Graphs";
+}
+
+.challenges::after {
+  background: var(--toolbox-purple) !important;
+}
+
+.challenges::before {
+  content: "MEDIA TOOLS" !important;
+  background: var(--toolbox-purple) !important;
+}
+
+.activity-feed::before {
+  content: "PROJECT TOOLS" !important;
+  color: var(--toolbox-ink) !important;
+  background: var(--toolbox-lime) !important;
+}
+
+.activity-feed h2:empty::before {
+  content: "Project Evaluator";
+}
+
+button,
+input,
+select,
+textarea {
+  border: 3px solid var(--toolbox-ink);
+  border-radius: 11px;
+  color: var(--toolbox-ink);
+  background: var(--toolbox-paper);
+  font: inherit;
+}
+
+button {
+  min-height: 48px;
+  padding: 9px 17px;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0 var(--toolbox-ink);
+  cursor: pointer;
+}
+
+button:nth-of-type(odd) {
+  color: var(--toolbox-paper);
+  background: var(--toolbox-pink);
+}
+
+button:hover {
+  background: var(--toolbox-lime);
+  color: var(--toolbox-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--toolbox-ink);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 4px solid var(--toolbox-cyan);
+  outline-offset: 2px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 3px solid var(--toolbox-ink);
+  border-radius: 10px;
+  background: var(--toolbox-paper);
+}
+
+th,
+td {
+  padding: 9px 10px;
+  border-right: 2px solid var(--toolbox-ink);
+  border-bottom: 2px solid var(--toolbox-ink);
+  text-align: left;
+}
+
+th {
+  color: var(--toolbox-ink);
+  background: var(--toolbox-lime);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+#footer {
+  grid-column: 1 / -1 !important;
+  min-height: 0 !important;
+  padding: 15px 18px !important;
+  border-radius: 12px !important;
+  background: var(--toolbox-paper) !important;
+  font-size: 0.72rem;
+}
+
+#footer::before,
+#footer::after {
+  display: none !important;
+}
+
+@media (max-width: 920px) {
+  .dashboard > div {
+    grid-column: span 6;
+  }
+
+  .profile {
+    min-height: 290px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    padding: 30px 14px 45px;
+  }
+
+  fieldset label {
+    display: flex;
+    margin-right: 0;
+  }
+
+  .dashboard > div {
+    grid-column: 1 / -1;
+  }
+
+  .profile {
+    min-height: 310px !important;
+    padding: 30px 24px !important;
+  }
+
+  .profile h2 {
+    width: 100%;
+    font-size: clamp(2.75rem, 15vw, 4.2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
