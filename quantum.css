@@ -1,0 +1,325 @@
+/* QUANTUM — dashboard theme adapted from BRUTAL QUANTUM.
+   Load this stylesheet after any widget-specific CSS. No HTML changes required. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Rajdhani:wght@700&display=swap');
+
+:root {
+  --brutal-black: #000000;
+  --brutal-white: #ffffff;
+  --brutal-red: #FF006E;
+  --brutal-blue: #3A86FF;
+  --brutal-yellow: #FFBE0B;
+  --brutal-green: #8338EC; /* Original reference uses this name for purple. */
+  --brutal-orange: #FB5607;
+  --brutal-pink: #FF4081;
+  --bg-color: #ffffff;
+  --text-color: #000;
+  --border-width: 6px;
+  --color-pink: #FF006E;
+  --color-lime: #FFBE0B;
+  --color-blue: #3A86FF;
+  --color-purp: #8338EC;
+  --color-orange: #FB5607;
+  --color-grey: #f0f0f0;
+  --shadow: 10px 10px 0 #000;
+  --shadow-sm: 5px 5px 0 #000;
+  /* Compatibility with dashboard widgets using the previous variables. */
+  --ink: #000;
+  --paper: #fff;
+  --panel: #fff;
+  --panel-2: #f0f0f0;
+  --panel-3: #ffffff;
+  --muted: #444;
+  --electric-lime: var(--color-lime);
+  --hot-pink: var(--color-pink);
+  --sky-blue: var(--color-blue);
+  --border: var(--border-width) solid #000;
+  --radius: 0;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 32px;
+  background-color: var(--bg-color);
+  background-image:
+    linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text-color);
+  font: 400 16px/1.55 'Space Mono', monospace;
+}
+::selection { background: var(--color-lime); color: #000; }
+a { color: #000; font-weight: 700; text-underline-offset: 4px; }
+a:hover { background: var(--color-lime); }
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 5px;
+}
+
+/* Stylesheet controls remain separate from the dashboard grid. */
+body > fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  width: min(1160px, 100%);
+  margin: 0 auto 28px;
+  padding: 16px 20px;
+  border: var(--border);
+  background: var(--color-purp);
+  box-shadow: var(--shadow);
+}
+body > fieldset legend {
+  padding: 4px 10px;
+  border: var(--border);
+  background: #fff;
+  font-weight: 700;
+}
+body > fieldset label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  text-transform: none;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 36px;
+  width: min(1160px, 100%);
+  margin: 0 auto;
+}
+.dashboard > div {
+  position: relative;
+  grid-column: 1 / -1;
+  min-width: 0;
+  min-height: 150px;
+  padding: 28px;
+  border: var(--border);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.dashboard > .profile {
+  min-height: auto;
+  padding: 30px;
+  background: var(--color-purp);
+}
+.profile h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  letter-spacing: -1px;
+  text-shadow: 3px 3px 0 var(--brutal-red), -3px -3px 0 var(--brutal-blue);
+}
+.profile p:empty { display: none; }
+.dashboard > .calories { background: var(--color-pink); }
+.dashboard > .personal-bests { background: var(--color-blue); }
+.dashboard > .challenges { background: var(--color-lime); }
+.dashboard > .activity-feed { background: var(--color-purp); }
+
+h1, h2, h3 { font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; }
+th, h4 { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
+h1, h2, h3 { line-height: 1.15; }
+h1, h2 { text-transform: uppercase; letter-spacing: -.5px; }
+h1 { margin: 0 0 20px; }
+h2 {
+  display: inline-block;
+  margin: 0 0 20px;
+  padding: 8px 12px;
+  border: var(--border);
+  background: var(--color-blue);
+  box-shadow: var(--shadow-sm);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+.calories h2, .personal-bests h2, .challenges h2, .activity-feed h2 { background: #fff; }
+h4, label { font-weight: 700; }
+label { display: block; margin-bottom: 14px; font-size: .85rem; }
+h1:empty, h2:empty { display: none; }
+
+.table-wrap, #progress-preview, #list-preview, #faq-preview,
+#table-container, .snippet-container {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 14px;
+  border: 2px solid #000;
+  background: #fff;
+}
+.table-wrap { padding: 0; }
+.table-wrap:empty { min-height: 80px; }
+table, .grid-table { width: 100%; border-collapse: collapse; background: #fff; color: #000; }
+th, td, .grid-table div { padding: 14px 16px; border: 2px solid #000; text-align: left; vertical-align: top; }
+th, .grid-table .header-cell { background: var(--color-lime); color: #000; font-weight: 700; text-transform: uppercase; }
+th { font-size: .9rem; letter-spacing: .5px; }
+td { font-size: .85rem; }
+tbody tr:nth-child(even) { background: var(--color-grey); }
+tbody tr:hover { background: var(--bg-color); }
+ul, ol { padding-left: 1.5rem; }
+li { margin-bottom: 10px; }
+details { margin-bottom: 12px; padding: 14px; border: 2px solid #000; background: #fff; }
+summary { cursor: pointer; font-weight: 700; }
+
+input, textarea, select {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border: var(--border);
+  border-radius: 0;
+  background: #fff;
+  color: #000;
+  font: 400 .9rem/1.5 'Space Mono', monospace;
+  box-shadow: var(--shadow-sm);
+}
+textarea { min-height: 140px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #666; opacity: 1; }
+select { cursor: pointer; }
+input[type='checkbox'], input[type='radio'] {
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+  accent-color: #000;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+input[type='range'], input[type='color'] { padding: 4px; }
+button, input[type='button'], input[type='submit'], input[type='reset'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  min-height: 44px;
+  margin: 10px 10px 0 0;
+  padding: 12px 18px;
+  border: var(--border);
+  border-radius: 0;
+  background: var(--color-blue);
+  color: #000;
+  font: 700 .9rem/1.3 'Space Mono', monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform .1s ease, box-shadow .1s ease, background-color .1s ease;
+}
+button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover {
+  background: var(--color-lime);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+button:active, input[type='button']:active, input[type='submit']:active, input[type='reset']:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+button:disabled, input:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+#delete-btn { background: var(--color-orange); }
+
+img, canvas, audio { max-width: 100%; }
+img, canvas { height: auto; }
+.snippet, .movie-container, #app-container, .audio-player {
+  max-width: 100%;
+  padding: 18px;
+  border: var(--border);
+  border-radius: 0;
+  background: #fff;
+  color: #000;
+  box-shadow: var(--shadow-sm);
+}
+.snippet input, .snippet textarea { margin-bottom: 10px; }
+#progress-preview > div, #list-preview > *, #faq-preview > *, #table-container > * { color: #000; }
+#progress-preview [style*='border:1px solid black'] { border: 2px solid #000 !important; overflow: hidden; }
+#progress-preview [style*='background:'] { min-height: 28px; padding-left: 10px; color: #000; font-weight: 700; }
+.word-header, .definition, .example, .word-type, #result { border-color: #000; }
+.definition strong, .example strong, .word-type strong { color: #000; background: var(--color-pink); }
+#correct-words { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 0; }
+#correct-words li { list-style: none; margin: 0; padding: 6px 10px; border: 2px solid #000; background: var(--color-lime); }
+.dashboard > #footer { min-height: auto; background: var(--color-grey); text-align: center; font-size: .8rem; }
+
+/* Tilted feature-card treatment and the reference's black title blocks. */
+body > fieldset { background: var(--brutal-yellow); }
+.dashboard > div {
+  --panel-tilt: 0deg;
+  transform: rotate(var(--panel-tilt));
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.dashboard > .profile {
+  background: #000;
+  color: #fff;
+  border-width: 8px;
+  box-shadow: 12px 12px 0 #000, 22px 22px 0 rgba(0,0,0,.2);
+  margin-bottom: 8px;
+}
+.profile h2 { color: #fff; font-size: clamp(3rem, 7vw, 6rem); letter-spacing: 2px; }
+.dashboard > .section-title { --panel-tilt: -.6deg; background: var(--brutal-yellow); }
+.dashboard > .exercise-table { --panel-tilt: .6deg; background: var(--brutal-blue); }
+.dashboard > .calories { --panel-tilt: -1deg; background: var(--brutal-red); }
+.dashboard > .personal-bests { --panel-tilt: 1deg; background: var(--brutal-blue); }
+.dashboard > .challenges { --panel-tilt: -1deg; background: var(--brutal-orange); }
+.dashboard > .activity-feed { --panel-tilt: 1deg; background: var(--brutal-green); color: #fff; }
+h2, .calories h2, .personal-bests h2, .challenges h2, .activity-feed h2 {
+  background: #000;
+  color: #fff;
+  letter-spacing: 1px;
+  border-width: 4px;
+  transform: rotate(-1deg);
+}
+.profile h2 { background: transparent; border: 0; transform: none; }
+.dashboard > #footer { background: #000; color: #fff; }
+#footer a { color: var(--brutal-yellow); }
+#footer a:hover { color: #000; }
+.activity-feed a { color: #fff; }
+.activity-feed a:hover { color: #000; }
+.activity-feed label, .activity-feed h4 { color: #fff; }
+.activity-feed :is(.table-wrap, details, .snippet, .movie-container, #app-container, .audio-player) { color: #000; }
+button, input[type='button'], input[type='submit'], input[type='reset'] {
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--brutal-blue);
+  color: #000;
+  box-shadow: 6px 6px 0 #000;
+}
+button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover {
+  background: var(--brutal-red);
+  color: #000;
+  transform: rotate(1deg) translate(-3px, -3px);
+  box-shadow: 9px 9px 0 #000;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--brutal-green);
+  outline-offset: 4px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .dashboard > div:not(.profile):not(#footer):hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 14px 14px 0 #000;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 760px) {
+  .dashboard .calories { grid-column: 1 / 8; }
+  .dashboard .personal-bests { grid-column: 8 / -1; }
+  .dashboard .challenges { grid-column: 1 / 5; }
+  .dashboard .activity-feed { grid-column: 5 / -1; }
+}
+@media (max-width: 759px) {
+  body { padding: 16px; }
+  .dashboard { gap: 24px; }
+  .dashboard > div { --panel-tilt: 0deg; box-shadow: 6px 6px 0 #000; }
+  .dashboard > .profile { box-shadow: 6px 6px 0 #000; }
+  .dashboard > div { padding: 18px; }
+  .dashboard > .profile { padding: 22px 18px; }
+  body > fieldset { padding: 12px; gap: 10px; }
+  th, td, .grid-table div { padding: 10px; }
+  button { max-width: 100%; overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dashboard > div, button, input { transition: none; }
+  .dashboard > div, h2, button:hover { transform: none; }
+}
